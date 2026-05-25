@@ -1,0 +1,383 @@
+/* =========================================
+   Casa Kura Design System
+   Colors: Navy #1B2A4A | Gold #C9A84C | Beige #F5EFE0
+   ========================================= */
+
+:root {
+  --kura-navy:       #1B2A4A;
+  --kura-navy-light: #253660;
+  --kura-gold:       #C9A84C;
+  --kura-gold-light: #E2C478;
+  --kura-gold-pale:  #F0E0B0;
+  --kura-beige:      #F5EFE0;
+  --kura-beige-dark: #EAE0C8;
+  --kura-white:      #FFFFFF;
+  --kura-text:       #2D2D2D;
+  --kura-text-muted: #6B6B6B;
+  --kura-error:      #C0392B;
+  --kura-error-bg:   #FDECEB;
+
+  --radius-sm:  6px;
+  --radius-md:  12px;
+  --radius-lg:  20px;
+  --radius-xl:  24px;
+
+  --shadow-sm:  0 1px 3px rgba(27, 42, 74, 0.08);
+  --shadow-md:  0 4px 16px rgba(27, 42, 74, 0.12);
+  --shadow-lg:  0 8px 32px rgba(27, 42, 74, 0.16);
+
+  --font-sans:  'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--kura-beige);
+  color: var(--kura-text);
+  line-height: 1.6;
+}
+
+/* ── App Shell ── */
+.kura-app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--kura-white);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── Header ── */
+.kura-header {
+  background: var(--kura-navy);
+  padding: 0 20px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.kura-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.kura-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kura-logo-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--kura-gold), var(--kura-gold-light));
+  color: var(--kura-navy);
+  font-weight: 800;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.3);
+}
+
+.kura-logo-name {
+  display: block;
+  color: var(--kura-white);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+}
+
+.kura-logo-tagline {
+  display: block;
+  color: var(--kura-gold-light);
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.kura-clear-btn {
+  background: transparent;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  color: var(--kura-gold-light);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.kura-clear-btn:hover {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: var(--kura-gold);
+  color: var(--kura-gold);
+}
+
+/* ── Chat Window ── */
+.kura-chat-window {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--kura-beige);
+  scroll-behavior: smooth;
+}
+
+.kura-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 20px;
+  min-height: 100%;
+}
+
+/* ── Message Rows ── */
+.kura-message {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.kura-message--user {
+  flex-direction: row-reverse;
+}
+
+/* ── Avatar ── */
+.kura-avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--kura-navy), var(--kura-navy-light));
+  color: var(--kura-gold);
+  font-weight: 800;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Bubbles ── */
+.kura-bubble {
+  padding: 12px 16px;
+  border-radius: var(--radius-lg);
+  font-size: 15px;
+  line-height: 1.55;
+  box-shadow: var(--shadow-sm);
+  max-width: calc(100% - 54px);
+  word-break: break-word;
+}
+
+.kura-message--assistant .kura-bubble {
+  background: var(--kura-white);
+  color: var(--kura-text);
+  border-bottom-left-radius: var(--radius-sm);
+  border: 1px solid var(--kura-beige-dark);
+}
+
+.kura-message--user .kura-bubble {
+  background: linear-gradient(135deg, var(--kura-navy), var(--kura-navy-light));
+  color: var(--kura-white);
+  border-bottom-right-radius: var(--radius-sm);
+}
+
+/* ── Typing indicator ── */
+.kura-bubble--typing {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 14px 18px;
+  min-width: 60px;
+}
+
+.kura-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--kura-gold);
+  animation: kura-bounce 1.2s infinite ease-in-out;
+}
+
+.kura-dot:nth-child(1) { animation-delay: 0s;    }
+.kura-dot:nth-child(2) { animation-delay: 0.2s;  }
+.kura-dot:nth-child(3) { animation-delay: 0.4s;  }
+
+@keyframes kura-bounce {
+  0%, 80%, 100% { transform: translateY(0);    opacity: 0.4; }
+  40%            { transform: translateY(-7px); opacity: 1;   }
+}
+
+/* ── Error Banner ── */
+.kura-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--kura-error-bg);
+  color: var(--kura-error);
+  border: 1px solid rgba(192, 57, 43, 0.25);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.kura-error button {
+  background: none;
+  border: none;
+  color: var(--kura-error);
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  flex-shrink: 0;
+}
+
+/* ── Input Area ── */
+.kura-input-area {
+  background: var(--kura-white);
+  border-top: 1px solid var(--kura-beige-dark);
+  padding: 12px 20px 10px;
+  flex-shrink: 0;
+}
+
+.kura-input-inner {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  background: var(--kura-beige);
+  border: 1.5px solid var(--kura-beige-dark);
+  border-radius: var(--radius-xl);
+  padding: 8px 8px 8px 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.kura-input-inner:focus-within {
+  border-color: var(--kura-gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.15);
+}
+
+.kura-textarea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--kura-text);
+  resize: none;
+  outline: none;
+  line-height: 1.5;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.kura-textarea::placeholder {
+  color: var(--kura-text-muted);
+}
+
+.kura-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ── Send Button ── */
+.kura-send-btn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--kura-gold), var(--kura-gold-light));
+  color: var(--kura-navy);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+}
+
+.kura-send-btn:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: var(--shadow-md);
+}
+
+.kura-send-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.kura-send-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ── Send Spinner ── */
+.kura-send-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(27, 42, 74, 0.25);
+  border-top-color: var(--kura-navy);
+  border-radius: 50%;
+  animation: kura-spin 0.7s linear infinite;
+}
+
+@keyframes kura-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Disclaimer ── */
+.kura-disclaimer {
+  text-align: center;
+  font-size: 11px;
+  color: var(--kura-text-muted);
+  margin-top: 6px;
+  letter-spacing: 0.2px;
+}
+
+/* ── Scrollbar ── */
+.kura-chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+.kura-chat-window::-webkit-scrollbar-track {
+  background: transparent;
+}
+.kura-chat-window::-webkit-scrollbar-thumb {
+  background: var(--kura-beige-dark);
+  border-radius: 3px;
+}
+.kura-chat-window::-webkit-scrollbar-thumb:hover {
+  background: var(--kura-gold-pale);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .kura-header {
+    padding: 0 14px;
+  }
+
+  .kura-messages {
+    padding: 16px 14px;
+  }
+
+  .kura-input-area {
+    padding: 10px 14px 8px;
+  }
+
+  .kura-logo-name {
+    font-size: 15px;
+  }
+
+  .kura-clear-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
