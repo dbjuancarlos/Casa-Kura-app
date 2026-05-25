@@ -1,0 +1,4 @@
+Deployment Status: Ready for production
+App: Kura Chat
+Stack: React + Vite + Claude API
+Date: 2026-05-25
